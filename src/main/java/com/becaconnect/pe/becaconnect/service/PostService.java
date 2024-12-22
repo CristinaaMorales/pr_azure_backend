@@ -33,26 +33,6 @@ public class PostService {
     @Autowired
     private CommentRepository commentRepository;
 
-    @PostConstruct
-    public void initDefaultPost() {
-        if (postRepository.count() == 0) {
-            Post defaultPost = new Post();
-            defaultPost.setTitle("Primer Post de Prueba");
-            defaultPost.setContent("Este es el contenido del primer post creado automáticamente.");
-            defaultPost.setPostedBy("admin");
-            defaultPost.setImg("https://via.placeholder.com/150");
-            defaultPost.setTags(List.of("prueba", "inicial"));
-            defaultPost.setLikeCount(0);
-            defaultPost.setViewCount(0);
-            defaultPost.setCommentCount(0);
-            defaultPost.setDate(new Date());
-
-            postRepository.save(defaultPost);
-            System.out.println("Post inicial creado.");
-        } else {
-            System.out.println("Ya existen posts en la base de datos.");
-        }
-    }
 
     public Post createPost(Post post) {
 
